@@ -1,0 +1,9 @@
+FROM neo4j:latest
+
+ENV NEO4J_AUTH=neo4j/password
+
+COPY --chown=neo4j load-data.sh load-data.sh
+
+RUN chmod +x load-data.sh
+
+# ENTRYPOINT ["./load-data.sh"]

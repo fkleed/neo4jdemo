@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  neo4j:
+    build:
+      context: .
+      dockerfile: Dockerfile.neo4j
+    image: "neo4j-demo"
+    container_name: ${NEO4J_CONTAINER_NAME}
+    restart: unless-stopped
+    ports:
+      - 7474:7474
+      - 7687:7687
+    volumes:
+      - ./data:/var/lib/neo4j/data
+      - ./logs:/var/lib/neo4j/logs
+      - ./import:/var/lib/neo4j/import
+      - ./plugins:/var/lib/neo4j/plugins
+volumes:
+  data:
+  import:
+  logs:
+  plugins:
